@@ -1,0 +1,65 @@
+.container {
+  width: 100%;
+  max-width: 75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem 2rem;
+}
+
+.current {
+  flex: 1 1 40%;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.other {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 60%;
+  padding: 2rem;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+
+  &__icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 5px;
+    fill: var(--color--primary);
+  }
+
+  &__text {
+    font-size: 1.7rem;
+    position: relative;
+    top: 1px;
+    font-weight: 500;
+  }
+}
+
+.add__city {
+  align-self: center;
+  display: flex;
+  padding: 1rem;
+  justify-content: center;
+
+  &--icon {
+    fill: var(--color-grey-dark-3);
+    width: 2.5rem;
+    height: 2.5rem;
+    opacity: 0.5;
+  }
+}
+
+.error__message {
+  color: var(--color-red-error);
+  font-size: 1.6rem;
+  font-weight: 500;
+  padding: 2rem;
+  text-align: center;
+}

@@ -1,0 +1,18 @@
+<svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<symbol id="icon-location" viewBox="0 0 32 32">
+<title>location</title>
+<path d="M16 0c-5.523 0-10 4.477-10 10 0 10 10 22 10 22s10-12 10-22c0-5.523-4.477-10-10-10zM16 16c-3.314 0-6-2.686-6-6s2.686-6 6-6 6 2.686 6 6-2.686 6-6 6z"></path>
+</symbol>
+<symbol id="icon-map" viewBox="0 0 32 32">
+<title>map</title>
+<path d="M0 6l10-4v24l-10 4z"></path>
+<path d="M12 1l10 6v23l-10-5z"></path>
+<path d="M24 7l8-6v24l-8 6z"></path>
+</symbol>
+<symbol id="icon-plus" viewBox="0 0 32 32">
+<title>plus</title>
+<path d="M31 12h-11v-11c0-0.552-0.448-1-1-1h-6c-0.552 0-1 0.448-1 1v11h-11c-0.552 0-1 0.448-1 1v6c0 0.552 0.448 1 1 1h11v11c0 0.552 0.448 1 1 1h6c0.552 0 1-0.448 1-1v-11h11c0.552 0 1-0.448 1-1v-6c0-0.552-0.448-1-1-1z"></path>
+</symbol>
+</defs>
+</svg>

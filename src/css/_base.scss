@@ -9,6 +9,8 @@
 
   --color-grey-light: #fafafa;
 
+  --color-red-error: #ff5959;
+
   --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, 0.3);
   --shadow-light: 0 2rem 5rem rgba(0, 0, 0, 0.1);
 }
@@ -49,12 +51,12 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
+  display: flex;
+  justify-content: center;
 }
 
 h1 {
-  font-weight: 700;
   font-size: 3rem;
-
   @media only screen and (max-width: $bp-small) {
     font-size: 2rem;
   }
