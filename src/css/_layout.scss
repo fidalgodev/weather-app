@@ -31,7 +31,7 @@
     width: 1.5rem;
     height: 1.5rem;
     margin-right: 5px;
-    fill: var(--color--primary);
+    fill: var(--color-primary-dark);
   }
 
   &__text {
@@ -64,33 +64,30 @@
   text-align: center;
 }
 
-.forecast {
-  position: fixed;
+.forecast,
+.add-city {
+  position: relative;
   display: flex;
   flex-direction: column;
   opacity: 0;
-  top: 0;
-  left: 0;
   z-index: 1500;
-  min-height: 100vh;
   width: 0;
   height: 100%;
-  background-color: var(--color-grey-light);
   transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
   & .title {
     align-self: center;
-    margin-bottom: 0px;
+    margin-bottom: 1px;
 
     &__icon {
       width: 1.8rem;
       height: 1.8rem;
       margin-right: 5px;
-      fill: var(--color--primary);
+      fill: var(--color-primary-dark);
     }
 
     &__text {
-      font-size: 2.2rem;
+      font-size: 2rem;
       font-weight: 300;
       top: -1px;
 
@@ -104,22 +101,65 @@
   }
 }
 
-.forecast.open {
+.forecast.open,
+.add-city.open {
   opacity: 1;
   width: 100%;
 }
 
-.close-popup {
-  align-self: flex-end;
-  margin-top: 1rem;
-  margin-right: 1rem;
-  display: flex;
-  padding: 1rem;
+.search {
+  margin-top: 2rem;
+  padding: 2rem;
 
-  &--icon {
-    fill: var(--color-red-error);
-    width: 2.5rem;
-    transform: rotate(45deg);
-    height: 2.5rem;
+  &__form {
+    background: transparent;
+    color: var(--color-primary);
+    outline: none;
+    border: none;
+    width: 100%;
+    margin-bottom: 4rem;
+
+    &__input {
+      color: var(--color-primary);
+      border-bottom: 1px solid var(--color-primary);
+      padding: 5px 1rem;
+      width: 100%;
+      font-size: 1.5rem;
+      font-weight: 400;
+    }
+  }
+
+  &__results {
+    display: flex;
+    flex-direction: column;
+
+    & > *:not(:last-child) {
+      margin-bottom: 3rem;
+    }
+
+    &__single {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem 1.5rem;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.1);
+
+      &--country {
+        color: var(--color-primary-dark);
+        font-weight: 700;
+        font-size: 1.3rem;
+        margin-bottom: 2px;
+      }
+
+      &--city {
+        color: var(--color-primary);
+        font-weight: 300;
+        font-size: 2rem;
+        line-height: 1;
+      }
+    }
   }
 }

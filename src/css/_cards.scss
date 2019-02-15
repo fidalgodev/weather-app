@@ -63,6 +63,10 @@
   flex-direction: column;
   justify-content: center;
 
+  & > *:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+
   &__weather {
     display: flex;
     flex-direction: column;
@@ -71,7 +75,6 @@
     padding: 2rem;
     background-color: #fff;
     border-radius: 5px;
-    margin-bottom: 3rem;
     box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.1);
 
     & > *:not(:last-child) {
@@ -121,5 +124,42 @@
         font-weight: 300;
       }
     }
+  }
+}
+
+.days {
+  padding: 2rem;
+
+  & .cities__weather {
+    &__name {
+      font-size: 1.6rem;
+    }
+
+    &__details {
+      &--icon {
+        width: 5.5rem;
+        height: auto;
+      }
+    }
+  }
+
+  & > *:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+}
+
+.close-popup {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  align-self: flex-end;
+  display: flex;
+  padding: 1rem;
+
+  &--icon {
+    fill: var(--color-red-error);
+    width: 2.5rem;
+    transform: rotate(45deg);
+    height: 2.5rem;
   }
 }
