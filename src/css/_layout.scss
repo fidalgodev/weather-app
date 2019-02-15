@@ -8,7 +8,7 @@
 }
 
 .current {
-  flex: 1 1 40%;
+  flex: 1 1 35%;
   display: flex;
   flex-direction: column;
   padding: 2rem;
@@ -18,7 +18,7 @@
 .other {
   display: flex;
   flex-direction: column;
-  flex: 1 1 60%;
+  flex: 1 1 65%;
   padding: 2rem;
 }
 
@@ -62,4 +62,64 @@
   font-weight: 500;
   padding: 2rem;
   text-align: center;
+}
+
+.forecast {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  z-index: 1500;
+  min-height: 100vh;
+  width: 0;
+  height: 100%;
+  background-color: var(--color-grey-light);
+  transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  & .title {
+    align-self: center;
+    margin-bottom: 0px;
+
+    &__icon {
+      width: 1.8rem;
+      height: 1.8rem;
+      margin-right: 5px;
+      fill: var(--color--primary);
+    }
+
+    &__text {
+      font-size: 2.2rem;
+      font-weight: 300;
+      top: -1px;
+
+      &--subtitle {
+        align-self: center;
+        font-size: 1.7rem;
+        font-weight: 400;
+        color: var(--color-grey-dark-3);
+      }
+    }
+  }
+}
+
+.forecast.open {
+  opacity: 1;
+  width: 100%;
+}
+
+.close-popup {
+  align-self: flex-end;
+  margin-top: 1rem;
+  margin-right: 1rem;
+  display: flex;
+  padding: 1rem;
+
+  &--icon {
+    fill: var(--color-red-error);
+    width: 2.5rem;
+    transform: rotate(45deg);
+    height: 2.5rem;
+  }
 }
