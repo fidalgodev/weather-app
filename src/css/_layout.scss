@@ -150,6 +150,8 @@
       background-color: #fff;
       border-radius: 5px;
       box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.1);
+      transition: all 0.2s;
+      cursor: pointer;
 
       &--country {
         color: var(--color-primary-dark);
@@ -163,6 +165,14 @@
         font-weight: 300;
         font-size: 2rem;
         line-height: 1;
+      }
+
+      &.saved {
+        background-color: var(--color-primary);
+
+        & > * {
+          color: #fff;
+        }
       }
     }
   }
