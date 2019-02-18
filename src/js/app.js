@@ -2,6 +2,7 @@
 import Search from './Models/Search';
 import Saved from './Models/Saved';
 import Current from './Models/Current';
+import Others from './Models/Others';
 
 // Views
 import * as base from './Views/base';
@@ -35,8 +36,31 @@ const currentController = async () => {
     base.clearLoader(parent);
 
     // Render weather
-    homeView.renderCurrent(state.current);
+    homeView.renderWeather(state.current, parent, 'main');
   }
+};
+
+// - OTHER LOCATIONs CONTROLLER -
+const otherController = async () => {
+  // Render Loader
+  const parent = document.querySelector('.cities');
+  base.renderLoader(parent);
+
+  // Create state for others object
+  if (!state.others) {
+    state.others = new Others();
+  }
+  state.others = new Others();
+  // Get weather to all saved cities
+  await state.others.getWeather(state.saved.saved);
+
+  // Clear loader when finished
+  base.clearLoader(parent);
+
+  // Render weather
+  state.others.others.forEach(weather =>
+    homeView.renderWeather(weather, parent, 'other')
+  );
 };
 
 // - SEARCH CONTROLLER -
@@ -89,6 +113,7 @@ const savedController = id => {
     // render home when added
     homeView.renderHome();
     currentController();
+    otherController();
   }
   // if its saved, remove
   else {
@@ -112,6 +137,7 @@ base.elements.container.addEventListener('click', e => {
     base.clearUI();
     homeView.renderHome();
     currentController();
+    otherController();
   }
 
   if (addCityBtn) {
@@ -138,16 +164,13 @@ window.addEventListener('load', () => {
   // Render Home
   base.clearUI();
   homeView.renderHome();
-  currentController();
-
   // Create saved object on page load
   state.saved = new Saved();
 
   // Read data from the local storage
   state.saved.readLocal();
 
-  // // Render data to the menus
-  // state.favorites.favorites.forEach(favorite =>
-  //   favoriteView.renderFavorite(favorite)
-  // );
+  // Call current weather and other cities controller
+  currentController();
+  otherController();
 });

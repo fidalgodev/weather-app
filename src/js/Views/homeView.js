@@ -32,8 +32,10 @@ export const renderHome = () => {
   elements.container.innerHTML = markup;
 };
 
-export const renderCurrent = result => {
-  const markup = `
+export const renderWeather = (result, container, place) => {
+  let markup;
+  if (place === 'main') {
+    markup = `
   <h2 class="main__weather__city">${result.name}, ${result.country}</h2>
     <div class="main__weather__details">
       <img
@@ -45,12 +47,36 @@ export const renderCurrent = result => {
     <div class="main__weather__text">
       <div class="main__weather__text--phrase">${result.weather.name}</div>
       <div class="main__weather__text--minmax">${result.weather.temp_min}º - ${
-    result.weather.temp_max
-  }º</div>
+      result.weather.temp_max
+    }º</div>
     </div>
   `;
-  const container = document.querySelector('.main__weather');
-  container.innerHTML = markup;
+    container.innerHTML = markup;
+  } else if (place === 'other') {
+    markup = `
+    <div class="cities__weather">
+      <div class="cities__weather__name">${result.name}, ${result.country}</div>
+      <div class="cities__weather__details">
+        <img
+          src="./img/weather/iconfinder_weather-04_1530389.svg"
+          class="cities__weather__details--icon"
+        />
+        <div class="cities__weather__details__text">
+          <div class="cities__weather__details__text--phrase">
+            ${result.weather.name}
+          </div>
+          <div class="cities__weather__details__text--minmax">
+            ${result.weather.temp_min}º - ${result.weather.temp_max}º
+          </div>
+        </div>
+        <div class="cities__weather__details__temp">
+          ${result.weather.temp}º
+        </div>
+      </div>
+    </div>
+  `;
+    container.insertAdjacentHTML('beforeEnd', markup);
+  }
 };
 
 // export const renderLocation = result => {};
