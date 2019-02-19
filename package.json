@@ -13,7 +13,8 @@
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
     "axios": "^0.18.0",
-    "dotenv-webpack": "^1.7.0"
+    "dotenv-webpack": "^1.7.0",
+    "moment": "^2.24.0"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
@@ -21,6 +22,7 @@
     "babel-loader": "^8.0.5",
     "css-loader": "^2.1.0",
     "html-webpack-plugin": "^4.0.0-beta.5",
+    "moment-locales-webpack-plugin": "^1.0.7",
     "node-sass": "^4.11.0",
     "npm": "^6.8.0",
     "sass-loader": "^7.1.0",

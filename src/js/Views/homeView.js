@@ -60,9 +60,9 @@ export const renderWeather = (result, container, place) => {
   }
 
   // If weather of other location
-  else if (place === 'other') {
+  if (place === 'other') {
     markup = `
-    <div class="cities__weather">
+    <div class="cities__weather" data-id="${result.id}">
       <div class="cities__weather__name">${result.name}, ${result.country}</div>
       <div class="cities__weather__details">
         <img
