@@ -1,5 +1,6 @@
 import { elements } from './base';
 
+// Render Initial view
 export const renderHome = () => {
   const markup = `
     <div class="current">
@@ -32,8 +33,12 @@ export const renderHome = () => {
   elements.container.innerHTML = markup;
 };
 
+// Render the weather
+// Gets the weather, the container where it shoudl get placed, and if it's the main weather or the other for other location
 export const renderWeather = (result, container, place) => {
   let markup;
+
+  // If weather of main location
   if (place === 'main') {
     markup = `
   <h2 class="main__weather__city">${result.name}, ${result.country}</h2>
@@ -51,8 +56,11 @@ export const renderWeather = (result, container, place) => {
     }º</div>
     </div>
   `;
-    container.innerHTML = markup;
-  } else if (place === 'other') {
+    container.insertAdjacentHTML('afterBegin', markup);
+  }
+
+  // If weather of other location
+  else if (place === 'other') {
     markup = `
     <div class="cities__weather">
       <div class="cities__weather__name">${result.name}, ${result.country}</div>
@@ -78,5 +86,3 @@ export const renderWeather = (result, container, place) => {
     container.insertAdjacentHTML('beforeEnd', markup);
   }
 };
-
-// export const renderLocation = result => {};

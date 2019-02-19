@@ -38,19 +38,8 @@ export const renderSearch = () => {
   elements.container.innerHTML = markup;
 };
 
-// Render each result
-// const renderResult = res => {
-//   const resultsContainer = document.querySelector('.search__results');
-//   const markup = `
-//   <div class="search__results__single" data-id="${res.id}">
-//     <div class="search__results__single--country">${res.country}</div>
-//     <div class="search__results__single--city">${res.name}</div>
-//   </div>
-//   `;
-//   resultsContainer.insertAdjacentHTML('beforeEnd', markup);
-// };
-
 // Render the results
+// Gets result and if result is already in saved oibject
 export const renderResults = (res, isSaved) => {
   const resultsContainer = document.querySelector('.search__results');
   const markup = `
@@ -62,7 +51,6 @@ export const renderResults = (res, isSaved) => {
   </div>
   `;
   resultsContainer.insertAdjacentHTML('beforeEnd', markup);
-  // results.forEach(res => renderResult(res));
 };
 
 // Function to remove the saved class when location gets removed from saved

@@ -12,6 +12,7 @@ import * as homeView from './Views/homeView';
 // CSS
 import '../css/main.scss';
 
+// Global App state
 const state = {};
 window.state = state;
 
@@ -23,15 +24,18 @@ const currentController = async () => {
   const parent = document.querySelector('.main__weather');
   base.renderLoader(parent);
 
+  // Create state if its not created
+  if (!state.current) state.current = new Current();
+
   // Get current coords if they are not on state already
-  if (!state.current) {
-    state.current = new Current();
+  if (!state.current.coordAvailable() < 2) {
     await state.current.getCoords();
   }
 
   // Get weather for current location
-  if (state.current.coords.length > 0) {
+  if (state.current.coordAvailable() === 2) {
     await state.current.getWeather();
+
     // Clear loader
     base.clearLoader(parent);
 
@@ -46,11 +50,18 @@ const otherController = async () => {
   const parent = document.querySelector('.cities');
   base.renderLoader(parent);
 
-  // Create state for others object
-  if (!state.others) {
-    state.others = new Others();
+  // If there are no saved locations, display message
+  if (state.saved.checkSaved() === 0) {
+    base.renderError(
+      parent,
+      'You have no saved cities. Click the button above to add them!'
+    );
+    return;
   }
-  state.others = new Others();
+
+  // Create state for others object if doesnt exist
+  if (!state.others) state.others = new Others();
+
   // Get weather to all saved cities
   await state.others.getWeather(state.saved.saved);
 
@@ -71,35 +82,33 @@ async function searchController(e) {
   if (!this.value) return;
   state.search = new Search(this.value);
 
-  try {
-    // Show loader on page
-    const parent = document.querySelector('.search__results');
-    base.renderLoader(parent);
-    // Get results
-    await state.search.getResults();
+  // Show loader on page
+  const parent = document.querySelector('.search__results');
+  base.renderLoader(parent);
 
-    // Clear Loader
-    base.clearLoader(parent);
+  // Get results
+  await state.search.getResults();
 
-    // If no results
-    if (!state.search.results) {
-      const msg = 'There were no results, sorry!';
-      base.renderError(parent, msg);
-      return;
-    }
+  // Clear Loader
+  base.clearLoader(parent);
 
-    // Show results
+  // If no results
+  if (!state.search.results) {
+    const msg = 'There were no results, sorry!';
+    base.renderError(parent, msg);
+  }
+
+  // Otherwise, show them
+  else {
     state.search.results.forEach(res => {
+      // If location is saved, pass true on 2nd parameter
       const isSaved = state.saved.checkifSaved(res.id);
       searchView.renderResults(res, isSaved);
     });
-  } catch (err) {
-    console.log(err);
   }
 }
 
 // - SAVED LOCATIONS CONTROLLER -
-// gets the if the location
 const savedController = id => {
   // If no state, create
   if (!state.saved) state.saved = new Saved();
@@ -108,19 +117,24 @@ const savedController = id => {
   if (!state.saved.checkifSaved(id)) {
     // add the location
     state.saved.addLocation(id);
+
     // save to local storage
     state.saved.saveLocal();
+
     // render home when added
     homeView.renderHome();
     currentController();
     otherController();
   }
+
   // if its saved, remove
   else {
     // delete location
     state.saved.deleteLocation(id);
+
     // Remove background color
     searchView.removeSaved(id);
+
     // update local storage
     state.saved.saveLocal();
   }

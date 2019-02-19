@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { renderError, clearLoader } from '../Views/base';
 
 export default class Others {
   constructor() {
@@ -6,6 +7,8 @@ export default class Others {
   }
 
   async getWeather(ids) {
+    // Clean previous weather data if exsits
+    this.others = [];
     const proxy = process.env.PROXY;
     const api = process.env.APIKEY;
     const promises = ids.map(id =>

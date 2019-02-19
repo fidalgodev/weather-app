@@ -5,10 +5,12 @@ export const elements = {
   // otherLocations: document.querySelector('.other'),
 };
 
+// Clear the whole UI
 export const clearUI = () => {
   elements.container.innerHTML = '';
 };
 
+// Render loader inside div passed
 export const renderLoader = parent => {
   const markup = `
   <div class="loader">Loading...</div>
@@ -16,6 +18,7 @@ export const renderLoader = parent => {
   parent.innerHTML = markup;
 };
 
+// Clear loader on defined div
 export const clearLoader = parent => {
   parent.innerHTML = '';
 };
@@ -29,5 +32,3 @@ export const renderError = (parent, msg) => {
   `;
   parent.innerHTML = markup;
 };
-
-// export default elements;

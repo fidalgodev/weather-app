@@ -30,8 +30,8 @@ export default class Saved {
     return this.saved.findIndex(el => el === id) !== -1;
   }
 
-  checkFavorites() {
-    return this.saved.length();
+  checkSaved() {
+    return this.saved.length;
   }
 
   // Save to local storage

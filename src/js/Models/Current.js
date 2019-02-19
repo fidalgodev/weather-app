@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { renderError, clearLoader } from '../Views/base';
 
+// Turn navigator.getCurrentPosition in a Promise
 function getCurrentLocation(options) {
   return new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(
@@ -14,13 +15,16 @@ function getCurrentLocation(options) {
   });
 }
 
+// Div of main weather
 const parent = document.querySelector('.main__weather');
 
+// Class for the current weather
 export default class Current {
   constructor() {
     this.coords = [];
   }
 
+  // Get coords of current location
   async getCoords() {
     try {
       const data = await getCurrentLocation({
@@ -29,14 +33,21 @@ export default class Current {
       });
       this.coords = [data.coords.latitude, data.coords.longitude];
     } catch (err) {
+      // If error
       // Clear loader
       clearLoader(parent);
 
       // Render error
-      renderError(parent, 'You have to enable the location');
+      renderError(parent, 'You have to enable the location.');
     }
   }
 
+  // Check if coords are on the object
+  coordAvailable() {
+    return this.coords.length;
+  }
+
+  // Get weather for current location
   async getWeather() {
     const proxy = process.env.PROXY;
     const api = process.env.APIKEY;
