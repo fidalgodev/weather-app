@@ -14,6 +14,14 @@ export default class Saved {
     return id;
   }
 
+  // Remove all
+  deleteAllLocations() {
+    this.saved = [];
+
+    // update localstorage
+    this.saveLocal();
+  }
+
   // Remove a favorite location
   deleteLocation(id) {
     const index = this.saved.findIndex(el => el === id);

@@ -1,26 +1,31 @@
 import { elements } from './base';
 
 // Render Initial view
-export const renderView = name => {
+export const renderView = (name, data, other) => {
   const markup = `
     <div class="forecast open">
-        <button class="close-popup">
-          <svg class="close-popup--icon">
-            <use xlink:href="./img/symbol-defs.svg#icon-plus"></use>
-          </svg>
-        </button>
-        <div class="title">
-          <svg class="title__icon">
-            <use xlink:href="./img/symbol-defs.svg#icon-location"></use>
-          </svg>
-          <h1 class="title__text">
-            ${name}
-          </h1>
-        </div>
-        <div class="title__text--subtitle">Forecast for the next 5 days</div>
-        <div class="days">
-        </div>
+      <button class="close-popup">
+        <svg class="close-popup--icon">
+          <use xlink:href="./img/symbol-defs.svg#icon-plus"></use>
+        </svg>
+      </button>
+      <div class="title">
+        <svg class="title__icon">
+          <use xlink:href="./img/symbol-defs.svg#icon-location"></use>
+        </svg>
+        <h1 class="title__text">
+          ${name}
+        </h1>
       </div>
+      <div class="title__text--subtitle">Forecast for the next 5 days</div>
+      ${
+        other
+          ? `<button class="remove" data-id='${data}'>Remove from Saved</button>`
+          : ''
+      }
+      <div class="days">
+      </div>
+    </div>
   `;
   elements.container.innerHTML = markup;
 };
@@ -32,7 +37,7 @@ export const renderResult = (result, container) => {
       <div class="cities__weather__name">${result.date}</div>
       <div class="cities__weather__details">
         <img
-          src="./img/weather/iconfinder_weather-04_1530389.svg"
+          src="./img/weather/${result.icon}.svg"
           class="cities__weather__details--icon"
         />
         <div class="cities__weather__details__text">

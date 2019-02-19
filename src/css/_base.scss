@@ -68,6 +68,33 @@ input {
   background: transparent;
 }
 
+.remove {
+  align-self: center;
+  display: flex;
+  align-items: center;
+  background-color: var(--color-red-error);
+  padding: 5px 1rem;
+  color: var(--color-grey-light);
+  box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  margin-top: 1rem;
+  transition: all 0.2s;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.05);
+  }
+
+  &:active {
+    transform: translateY(2px);
+    box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.15);
+  }
+}
+
+.remove__all {
+  margin-bottom: 4rem;
+}
+
 ::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
   color: var(--color-grey-dark-3);

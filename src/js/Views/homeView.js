@@ -44,7 +44,7 @@ export const renderWeather = (result, container, place) => {
   <h2 class="main__weather__city">${result.name}, ${result.country}</h2>
     <div class="main__weather__details">
       <img
-        src="./img/weather/iconfinder_weather-01_1530392.svg"
+        src="./img/weather/${result.weather.icon}.svg"
         class="main__weather__details--icon"
       />
       <div class="main__weather__details--temp">${result.weather.temp}ºC</div>
@@ -66,7 +66,7 @@ export const renderWeather = (result, container, place) => {
       <div class="cities__weather__name">${result.name}, ${result.country}</div>
       <div class="cities__weather__details">
         <img
-          src="./img/weather/iconfinder_weather-04_1530389.svg"
+          src="./img/weather/${result.weather.icon}.svg"
           class="cities__weather__details--icon"
         />
         <div class="cities__weather__details__text">
@@ -87,4 +87,10 @@ export const renderWeather = (result, container, place) => {
   `;
     container.insertAdjacentHTML('beforeEnd', markup);
   }
+};
+
+export const renderDeleteAll = parent => {
+  const markup = `
+  <button class="remove remove__all">Remove all Locations</button>`;
+  parent.insertAdjacentHTML('beforeBegin', markup);
 };

@@ -9,6 +9,17 @@
   border-radius: 5px;
   transition: all 0.2s;
   box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.05);
+  }
+
+  &:active {
+    transform: translateY(2px);
+    box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.15);
+  }
 
   @media only screen and (max-width: $bp-tiny) {
     padding: 2rem;
@@ -90,6 +101,18 @@
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.1);
+    transition: all 0.2s;
+    cursor: pointer;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.05);
+    }
+
+    &:active {
+      transform: translateY(2px);
+      box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.15);
+    }
 
     & > *:not(:last-child) {
       margin-bottom: 1rem;

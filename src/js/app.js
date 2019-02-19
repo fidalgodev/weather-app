@@ -66,6 +66,9 @@ const otherController = () => {
   // Create state for others object if doesnt exist
   if (!state.others) state.others = new Others();
 
+  // Render delete button
+  homeView.renderDeleteAll(parent);
+
   // If there is weather already fetched, clean it
   if (state.others.weatherPresent() > 0) state.others.clearWeather();
 
@@ -84,12 +87,13 @@ const otherController = () => {
 };
 
 // - FORECAST CONTROLLER -
-const forescastController = async (name, data) => {
+// Other param is true if forecast is from other city and not the current location
+const forescastController = async (name, data, other) => {
   // if there is data, create a new forecast object
   if (name && data) state.forecast = new Forecast(name, data);
 
   // render initial view
-  forecastView.renderView(name);
+  forecastView.renderView(name, data, other);
 
   // loader
   const parent = document.querySelector('.days');
@@ -178,6 +182,29 @@ base.elements.container.addEventListener('click', e => {
   const searchItem = e.target.closest('.search__results__single');
   const cityCard = e.target.closest('.cities__weather');
   const currentCard = e.target.closest('.main__weather');
+  const removeBtn = e.target.closest('.remove');
+  const removeBtnAll = e.target.closest('.remove__all');
+
+  // if remove clicked
+  if (removeBtnAll) {
+    state.saved.deleteAllLocations();
+    // Render home
+    base.clearUI();
+    homeView.renderHome();
+    currentController();
+    otherController();
+  }
+
+  // if remove clicked
+  if (removeBtn && removeBtn.dataset.id) {
+    const id = [parseInt(removeBtn.dataset.id, 10)];
+    state.saved.deleteLocation(id);
+    // Render home
+    base.clearUI();
+    homeView.renderHome();
+    currentController();
+    otherController();
+  }
 
   if (closeBtn) {
     // Render home
@@ -191,14 +218,14 @@ base.elements.container.addEventListener('click', e => {
   if (cityCard && cityCard.dataset.id) {
     const id = [parseInt(cityCard.dataset.id, 10)];
     const name = cityCard.querySelector('.cities__weather__name').textContent;
-    forescastController(name, id);
+    forescastController(name, id, true);
   }
 
   // If current card clicked
   if (currentCard && currentCard.dataset.id) {
     const coords = currentCard.dataset.id.split(',').map(JSON.parse);
     const name = currentCard.querySelector('.main__weather__city').textContent;
-    if (coords.length === 2) forescastController(name, coords);
+    if (coords.length === 2) forescastController(name, coords, false);
   }
 
   if (addCityBtn) {
