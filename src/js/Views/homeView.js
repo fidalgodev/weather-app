@@ -51,9 +51,9 @@ export const renderWeather = (result, container, place) => {
     </div>
     <div class="main__weather__text">
       <div class="main__weather__text--phrase">${result.weather.name}</div>
-      <div class="main__weather__text--minmax">${result.weather.temp_min}ºC - ${
-      result.weather.temp_max
-    }ºC</div>
+      <div class="main__weather__text--minmax">${
+        result.weather.temp_min
+      }ºC <span class="dot">•</span> ${result.weather.temp_max}ºC</div>
     </div>
   `;
     container.insertAdjacentHTML('afterBegin', markup);
@@ -74,7 +74,9 @@ export const renderWeather = (result, container, place) => {
             ${result.weather.name}
           </div>
           <div class="cities__weather__details__text--minmax">
-            ${result.weather.temp_min}ºC - ${result.weather.temp_max}ºC
+            ${result.weather.temp_min}ºC <span class="dot">•</span> ${
+      result.weather.temp_max
+    }ºC
           </div>
         </div>
         <div class="cities__weather__details__temp">

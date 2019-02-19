@@ -13,14 +13,18 @@ export const clearUI = () => {
 // Render loader inside div passed
 export const renderLoader = parent => {
   const markup = `
-  <div class="loader">Loading...</div>
+  <div class="loader">
+    <div class="one"></div>
+    <div class="two"></div>
+  </div>
   `;
-  parent.innerHTML = markup;
+  parent.insertAdjacentHTML('afterBegin', markup);
 };
 
 // Clear loader on defined div
 export const clearLoader = parent => {
-  parent.innerHTML = '';
+  const loader = parent.querySelector('.loader');
+  parent.removeChild(loader);
 };
 
 // Render error inside parent div
@@ -30,5 +34,5 @@ export const renderError = (parent, msg) => {
       ${msg}
     </div>
   `;
-  parent.innerHTML = markup;
+  parent.insertAdjacentHTML('afterBegin', markup);
 };

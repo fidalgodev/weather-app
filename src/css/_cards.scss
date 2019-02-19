@@ -7,6 +7,7 @@
   padding: 3rem 4rem;
   background-color: #fff;
   border-radius: 5px;
+  transition: all 0.2s;
   box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.1);
 
   @media only screen and (max-width: $bp-tiny) {
@@ -64,7 +65,8 @@
     &--minmax {
       font-weight: 700;
       font-size: 1.3rem;
-      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
       color: var(--color-grey-dark-3);
     }
   }
@@ -132,6 +134,8 @@
 
         &--minmax {
           font-weight: 700;
+          display: flex;
+          align-items: center;
           color: var(--color-grey-dark-3);
           font-size: 1.2rem;
         }

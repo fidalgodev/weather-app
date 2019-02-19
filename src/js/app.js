@@ -45,10 +45,9 @@ const currentController = async () => {
 };
 
 // - OTHER LOCATIONs CONTROLLER -
-const otherController = async () => {
-  // Render Loader
+const otherController = () => {
+  // Get parent div
   const parent = document.querySelector('.cities');
-  base.renderLoader(parent);
 
   // If there are no saved locations, display message
   if (state.saved.checkSaved() === 0) {
@@ -62,16 +61,21 @@ const otherController = async () => {
   // Create state for others object if doesnt exist
   if (!state.others) state.others = new Others();
 
+  // If there is weather already fetched, clean it
+  if (state.others.weatherPresent() > 0) state.others.clearWeather();
+
+  // Render Loader
+  base.renderLoader(parent);
+
   // Get weather to all saved cities
-  await state.others.getWeather(state.saved.saved);
-
-  // Clear loader when finished
-  base.clearLoader(parent);
-
-  // Render weather
-  state.others.others.forEach(weather =>
-    homeView.renderWeather(weather, parent, 'other')
-  );
+  state.saved.saved.forEach(async (location, i, arr) => {
+    const weather = await state.others.getWeather(location);
+    homeView.renderWeather(weather, parent, 'other');
+    // if last iteration, clear loader
+    if (i === arr.length - 1) {
+      base.clearLoader(parent);
+    }
+  });
 };
 
 // - SEARCH CONTROLLER -
