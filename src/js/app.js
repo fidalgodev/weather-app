@@ -66,9 +66,6 @@ const otherController = () => {
   // Create state for others object if doesnt exist
   if (!state.others) state.others = new Others();
 
-  // Render delete button
-  homeView.renderDeleteAll(parent);
-
   // If there is weather already fetched, clean it
   if (state.others.weatherPresent() > 0) state.others.clearWeather();
 
@@ -82,6 +79,8 @@ const otherController = () => {
     // if last iteration, clear loader
     if (i === arr.length - 1) {
       base.clearLoader(parent);
+      // Render delete button
+      homeView.renderDeleteAll(parent);
     }
   });
 };

@@ -4,12 +4,12 @@ import { elements } from './base';
 export const renderSearch = () => {
   const markup = `
     <div class="add-city open">
-        <button class="close-popup">
+        <button class="close-popup animated fadeIn delay-1s">
           <svg class="close-popup--icon">
             <use xlink:href="./img/symbol-defs.svg#icon-plus"></use>
           </svg>
         </button>
-        <div class="title">
+        <div class="title animated fadeIn">
           <svg class="title__icon">
             <use xlink:href="./img/symbol-defs.svg#icon-map"></use>
           </svg>
@@ -17,10 +17,10 @@ export const renderSearch = () => {
             Add new location
           </h1>
         </div>
-        <div class="title__text--subtitle">
+        <div class="title__text--subtitle animated fadeIn">
           Find a city and tap on it to add
         </div>
-        <div class="search">
+        <div class="search animated fadeIn">
           <form action="#" class="search__form">
             <input
               type="text"
@@ -43,14 +43,16 @@ export const renderSearch = () => {
 export const renderResults = (res, isSaved) => {
   const resultsContainer = document.querySelector('.search__results');
   const markup = `
-  <div class="search__results__single ${isSaved ? 'saved' : ''}" data-id="${
-    res.id
-  }">
-    <div class="search__results__single--country">${res.country}</div>
-    <div class="search__results__single--city">${res.name}</div>
+  <div class="search__results__single ${
+    isSaved ? 'saved' : ''
+  } animated fadeIn" data-id="${res.id}">
+    <div class="search__results__single--country animated fadeIn">${
+      res.country
+    }</div>
+    <div class="search__results__single--city animated fadeIn">${res.name}</div>
   </div>
   `;
-  resultsContainer.insertAdjacentHTML('beforeEnd', markup);
+  resultsContainer.insertAdjacentHTML('beforeend', markup);
 };
 
 // Function to remove the saved class when location gets removed from saved
