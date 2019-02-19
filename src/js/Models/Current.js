@@ -15,9 +15,6 @@ function getCurrentLocation(options) {
   });
 }
 
-// Div of main weather
-const parent = document.querySelector('.main__weather');
-
 // Class for the current weather
 export default class Current {
   constructor() {
@@ -34,6 +31,9 @@ export default class Current {
       this.coords = [data.coords.latitude, data.coords.longitude];
     } catch (err) {
       // If error
+      // Div of main weather
+      const parent = document.querySelector('.main__weather');
+
       // Clear loader
       clearLoader(parent);
 
@@ -61,13 +61,16 @@ export default class Current {
       this.name = res.data.name;
       this.country = res.data.sys.country;
       this.weather = {
-        temp: res.data.main.temp,
-        temp_max: res.data.main.temp_max,
-        temp_min: res.data.main.temp_min,
+        temp: Math.round(res.data.main.temp),
+        temp_max: Math.round(res.data.main.temp_max),
+        temp_min: Math.round(res.data.main.temp_min),
         name: res.data.weather[0].main,
         icon: res.data.weather[0].icon,
       };
     } catch (err) {
+      // Div of main weather
+      const parent = document.querySelector('.main__weather');
+
       // Clear loader
       clearLoader(parent);
 

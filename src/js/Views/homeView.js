@@ -47,13 +47,13 @@ export const renderWeather = (result, container, place) => {
         src="./img/weather/iconfinder_weather-01_1530392.svg"
         class="main__weather__details--icon"
       />
-      <div class="main__weather__details--temp">${result.weather.temp}º</div>
+      <div class="main__weather__details--temp">${result.weather.temp}ºC</div>
     </div>
     <div class="main__weather__text">
       <div class="main__weather__text--phrase">${result.weather.name}</div>
-      <div class="main__weather__text--minmax">${result.weather.temp_min}º - ${
+      <div class="main__weather__text--minmax">${result.weather.temp_min}ºC - ${
       result.weather.temp_max
-    }º</div>
+    }ºC</div>
     </div>
   `;
     container.insertAdjacentHTML('afterBegin', markup);
@@ -74,11 +74,11 @@ export const renderWeather = (result, container, place) => {
             ${result.weather.name}
           </div>
           <div class="cities__weather__details__text--minmax">
-            ${result.weather.temp_min}º - ${result.weather.temp_max}º
+            ${result.weather.temp_min}ºC - ${result.weather.temp_max}ºC
           </div>
         </div>
         <div class="cities__weather__details__temp">
-          ${result.weather.temp}º
+          ${result.weather.temp}ºC
         </div>
       </div>
     </div>

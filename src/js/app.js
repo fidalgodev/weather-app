@@ -28,7 +28,7 @@ const currentController = async () => {
   if (!state.current) state.current = new Current();
 
   // Get current coords if they are not on state already
-  if (!state.current.coordAvailable() < 2) {
+  if (state.current.coordAvailable() < 2) {
     await state.current.getCoords();
   }
 

@@ -22,9 +22,9 @@ export default class Others {
         name: res.data.name,
         country: res.data.sys.country,
         weather: {
-          temp: res.data.main.temp,
-          temp_max: res.data.main.temp_max,
-          temp_min: res.data.main.temp_min,
+          temp: Math.round(res.data.main.temp),
+          temp_max: Math.round(res.data.main.temp_max),
+          temp_min: Math.round(res.data.main.temp_min),
           name: res.data.weather[0].main,
           icon: res.data.weather[0].icon,
         },
