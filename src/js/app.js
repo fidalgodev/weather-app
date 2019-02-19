@@ -16,7 +16,8 @@ import '../css/main.scss';
 
 // Global App state
 const state = {};
-window.state = state;
+// Leak state to global object for developing porpuses
+// window.state = state;
 
 // --- CONTROLLERS ---
 
