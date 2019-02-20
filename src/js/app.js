@@ -24,6 +24,29 @@ const state = {};
 
 // --- CONTROLLERS ---
 
+// - DARK MODE -
+const darkmodeController = () => {
+  const checkbox = document.querySelector('input[name=checkbox]');
+  if (state.darkMode.dark === 0) {
+    base.elements.body.classList.remove('dark');
+    checkbox.checked = false;
+  } else if (state.darkMode.dark === 1) {
+    base.elements.body.classList.add('dark');
+    checkbox.checked = true;
+  }
+  checkbox.addEventListener('change', function() {
+    if (this.checked) {
+      state.darkMode.dark = 1;
+      state.darkMode.saveLocal();
+      darkmodeController();
+    } else {
+      state.darkMode.dark = 0;
+      state.darkMode.saveLocal();
+      darkmodeController();
+    }
+  });
+};
+
 // - CURRENT LOCATION CONTROLLER -
 const currentController = async () => {
   // Render Loader
@@ -164,6 +187,7 @@ const savedController = id => {
 
     // render home when added
     homeView.renderHome();
+    darkmodeController();
     currentController();
     otherController();
   }
@@ -179,29 +203,6 @@ const savedController = id => {
     // update local storage
     state.saved.saveLocal();
   }
-};
-
-// - DARK MODE -
-const darkmodeController = () => {
-  const checkbox = document.querySelector('input[name=checkbox]');
-  if (state.darkMode.dark === 0) {
-    base.elements.body.classList.remove('dark');
-    checkbox.checked = false;
-  } else if (state.darkMode.dark === 1) {
-    base.elements.body.classList.add('dark');
-    checkbox.checked = true;
-  }
-  checkbox.addEventListener('change', function() {
-    if (this.checked) {
-      state.darkMode.dark = 1;
-      state.darkMode.saveLocal();
-      darkmodeController();
-    } else {
-      state.darkMode.dark = 0;
-      state.darkMode.saveLocal();
-      darkmodeController();
-    }
-  });
 };
 
 // --- EVENT LISTENERS ---
@@ -231,6 +232,7 @@ base.elements.container.addEventListener('click', e => {
     // Render home
     base.clearUI();
     homeView.renderHome();
+    darkmodeController();
     currentController();
     otherController();
   }
@@ -239,6 +241,7 @@ base.elements.container.addEventListener('click', e => {
     // Render home
     base.clearUI();
     homeView.renderHome();
+    darkmodeController();
     currentController();
     otherController();
   }
