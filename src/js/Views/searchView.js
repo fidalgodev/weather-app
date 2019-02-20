@@ -55,6 +55,12 @@ export const renderResults = (res, isSaved) => {
   resultsContainer.insertAdjacentHTML('beforeend', markup);
 };
 
+// Remove previous search
+export const clearSearch = () => {
+  const resultsContainer = document.querySelector('.search__results');
+  resultsContainer.innerHTML = '';
+};
+
 // Function to remove the saved class when location gets removed from saved
 export const removeSaved = id => {
   if (id) {

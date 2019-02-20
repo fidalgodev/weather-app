@@ -1,5 +1,6 @@
 // DOM Elements
 export const elements = {
+  body: document.querySelector('body'),
   container: document.querySelector('.container'),
   // currentLocation: document.querySelector('.current'),
   // otherLocations: document.querySelector('.other'),
@@ -18,7 +19,7 @@ export const renderLoader = parent => {
     <div class="two"></div>
   </div>
   `;
-  parent.insertAdjacentHTML('afterBegin', markup);
+  parent.insertAdjacentHTML('afterbegin', markup);
 };
 
 // Clear loader on defined div
@@ -34,5 +35,5 @@ export const renderError = (parent, msg) => {
       ${msg}
     </div>
   `;
-  parent.insertAdjacentHTML('afterBegin', markup);
+  parent.insertAdjacentHTML('afterbegin', markup);
 };

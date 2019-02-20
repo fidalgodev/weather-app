@@ -1,0 +1,129 @@
+.dark {
+  background-color: var(--color-primary-dark);
+  color: var(--color-grey-light);
+
+  & .title {
+    &__icon {
+      fill: var(--color-grey-light);
+    }
+
+    &__text {
+      color: var(--color-grey-light);
+    }
+  }
+
+  & .title__text--subtitle {
+    color: var(--color-grey-light);
+  }
+
+  & .main__weather {
+    background-color: var(--color-primary);
+
+    &__text {
+      &--phrase {
+        color: var(--color-grey-light);
+      }
+
+      &--minmax {
+        color: var(--color-primary-dark);
+      }
+    }
+
+    &__details--temp {
+      color: var(--color-primary-dark);
+    }
+  }
+
+  & .cities__weather {
+    background-color: var(--color-primary);
+
+    &__details {
+      &__text {
+        &--phrase {
+          color: var(--color-grey-light);
+        }
+
+        &--minmax {
+          color: var(--color-primary-dark);
+        }
+      }
+
+      &__temp {
+        color: var(--color-primary-dark);
+      }
+    }
+  }
+
+  & .add__city--icon {
+    fill: var(--color-grey-light);
+  }
+
+  & .search__results__single {
+    background-color: var(--color-primary);
+
+    &--country {
+      color: var(--color-primary-dark);
+    }
+
+    &--city {
+      color: var(--color-grey-light);
+    }
+
+    &.saved {
+      background-color: var(--color-grey-light);
+    }
+  }
+
+  & .saved .search__results__single--city {
+    color: var(--color-primary);
+  }
+
+  & .search__form__input {
+    color: var(--color-grey-light);
+  }
+}
+
+// TOGGLER //
+input[type='checkbox'] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+label {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 70px;
+  height: 35px;
+  background: grey;
+  display: block;
+  border-radius: 100px;
+}
+
+label:after {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 25px;
+  height: 25px;
+  background: #fff;
+  border-radius: 90px;
+  transition: all 0.2s;
+}
+
+input:checked + label {
+  background: var(--color-primary);
+}
+
+input:checked + label:after {
+  left: calc(100% - 5px);
+  transform: translateX(-100%);
+}
+
+label:active:after {
+  width: 65px;
+}

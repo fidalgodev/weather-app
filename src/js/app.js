@@ -5,6 +5,9 @@ import Current from './Models/Current';
 import Others from './Models/Others';
 import Forecast from './Models/Forecast';
 
+// Dark
+import DarkMode from './Models/Dark';
+
 // Views
 import * as base from './Views/base';
 import * as searchView from './Views/searchView';
@@ -88,12 +91,12 @@ const otherController = () => {
 
 // - FORECAST CONTROLLER -
 // Other param is true if forecast is from other city and not the current location
-const forescastController = async (name, data, other) => {
+const forescastController = async (current, data, other) => {
   // if there is data, create a new forecast object
-  if (name && data) state.forecast = new Forecast(name, data);
+  if (current && data) state.forecast = new Forecast(current, data);
 
   // render initial view
-  forecastView.renderView(name, data, other);
+  forecastView.renderView(current, data, other);
 
   // loader
   const parent = document.querySelector('.days');
@@ -126,6 +129,9 @@ async function searchController(e) {
 
   // Clear Loader
   base.clearLoader(parent);
+
+  // Clear Previous Search
+  searchView.clearSearch();
 
   // If no results
   if (!state.search.results) {
@@ -175,6 +181,29 @@ const savedController = id => {
   }
 };
 
+// - DARK MODE -
+const darkmodeController = () => {
+  const checkbox = document.querySelector('input[name=checkbox]');
+  if (state.darkMode.dark === 0) {
+    base.elements.body.classList.remove('dark');
+    checkbox.checked = false;
+  } else if (state.darkMode.dark === 1) {
+    base.elements.body.classList.add('dark');
+    checkbox.checked = true;
+  }
+  checkbox.addEventListener('change', function() {
+    if (this.checked) {
+      state.darkMode.dark = 1;
+      state.darkMode.saveLocal();
+      darkmodeController();
+    } else {
+      state.darkMode.dark = 0;
+      state.darkMode.saveLocal();
+      darkmodeController();
+    }
+  });
+};
+
 // --- EVENT LISTENERS ---
 base.elements.container.addEventListener('click', e => {
   const closeBtn = e.target.closest('.close-popup');
@@ -217,15 +246,15 @@ base.elements.container.addEventListener('click', e => {
   // If city card clicked
   if (cityCard && cityCard.dataset.id) {
     const id = [parseInt(cityCard.dataset.id, 10)];
-    const name = cityCard.querySelector('.cities__weather__name').textContent;
-    forescastController(name, id, true);
+    const current = state.others.returnWeather(id);
+    forescastController(current, id, true);
   }
 
   // If current card clicked
   if (currentCard && currentCard.dataset.id) {
     const coords = currentCard.dataset.id.split(',').map(JSON.parse);
-    const name = currentCard.querySelector('.main__weather__city').textContent;
-    if (coords.length === 2) forescastController(name, coords, false);
+    const current = state.current;
+    if (coords.length === 2) forescastController(current, coords, false);
   }
 
   if (addCityBtn) {
@@ -252,6 +281,12 @@ window.addEventListener('load', () => {
   // Render Home
   base.clearUI();
   homeView.renderHome();
+
+  // Dark mode switch
+  state.darkMode = new DarkMode();
+  state.darkMode.readLocal();
+  darkmodeController();
+
   // Create saved object on page load
   state.saved = new Saved();
 

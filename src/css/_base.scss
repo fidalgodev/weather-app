@@ -57,6 +57,7 @@ body {
   background-repeat: no-repeat;
   min-height: 100vh;
   display: flex;
+  transition: all 0.4s;
   justify-content: center;
 }
 
@@ -70,15 +71,16 @@ input {
 
 .remove {
   align-self: center;
-  display: flex;
-  align-items: center;
   background-color: var(--color-red-error);
-  padding: 5px 1rem;
+  padding: 6px 12px;
   color: var(--color-grey-light);
   box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   margin-top: 1rem;
   transition: all 0.2s;
+  width: auto;
+  height: auto;
+  margin-bottom: 1rem;
 
   &:hover {
     transform: translateY(-2px);
@@ -150,6 +152,16 @@ h1 {
   animation: loading 1.3s infinite;
   height: 20px;
   width: 20px;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
 }
 
 @keyframes loading {

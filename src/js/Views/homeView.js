@@ -3,7 +3,8 @@ import { elements } from './base';
 // Render Initial view
 export const renderHome = () => {
   const markup = `
-    <div class="current">
+    <input name= "checkbox" type="checkbox" id="switch" class="switch" /><label for="switch">Toggle</label>
+    <div class="current noselect">
       <div class="title animated fadeIn">
         <svg class="title__icon">
           <use xlink:href="./img/symbol-defs.svg#icon-location"></use>
@@ -68,7 +69,9 @@ export const renderWeather = (result, container, place) => {
   // If weather of other location
   if (place === 'other') {
     markup = `
-    <div class="cities__weather animated fadeIn" data-id="${result.id}">
+    <div class="cities__weather animated fadeIn noselect" data-id="${
+      result.id
+    }">
       <div class="cities__weather__name animated fadeIn">${result.name}, ${
       result.country
     }</div>

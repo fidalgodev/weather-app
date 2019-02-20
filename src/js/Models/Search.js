@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { renderError, clearLoader } from '../Views/base';
 
 export default class Search {
   constructor(query) {
@@ -16,12 +15,7 @@ export default class Search {
       // Save the data on the object
       this.results = res.data;
     } catch (err) {
-      const parent = document.querySelector('.search__results');
-      // Clear loader
-      clearLoader(parent);
-
-      // Render error
-      renderError(parent, 'There was a problem while searching');
+      console.log(err);
     }
   }
 }

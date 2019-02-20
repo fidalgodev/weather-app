@@ -27,6 +27,12 @@ export default class Others {
     return weather;
   }
 
+  returnWeather(id) {
+    const i = parseInt(id, 10);
+    const index = this.others.findIndex(el => el.id === i);
+    return this.others[index];
+  }
+
   weatherPresent() {
     return this.others.length;
   }
