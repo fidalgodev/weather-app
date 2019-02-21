@@ -84,6 +84,20 @@
 }
 
 // TOGGLER //
+.darkmode {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: flex;
+  align-items: center;
+
+  &__text {
+    margin-right: 1rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+  }
+}
+
 input[type='checkbox'] {
   height: 0;
   width: 0;
@@ -91,13 +105,11 @@ input[type='checkbox'] {
 }
 
 label {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
+  position: relative;
   cursor: pointer;
   text-indent: -9999px;
-  width: 70px;
-  height: 35px;
+  width: 50px;
+  height: 25px;
   background: grey;
   display: block;
   border-radius: 100px;
@@ -108,18 +120,18 @@ label {
   }
 
   @media only screen and (max-width: $bp-smallest) {
-    width: 25px;
-    height: 15px;
+    width: 30px;
+    height: 18px;
   }
 }
 
 label:after {
   content: '';
   position: absolute;
-  top: 5px;
+  top: 4px;
   left: 5px;
-  width: 25px;
-  height: 25px;
+  width: 17px;
+  height: 17px;
   background: #fff;
   border-radius: 90px;
   transition: all 0.2s;
@@ -132,10 +144,10 @@ label:after {
   }
 
   @media only screen and (max-width: $bp-smallest) {
-    top: 3px;
+    top: 4px;
     left: 3px;
-    width: 9px;
-    height: 9px;
+    width: 10px;
+    height: 10px;
   }
 }
 
@@ -153,13 +165,13 @@ input:checked + label:after {
 }
 
 label:active:after {
-  width: 65px;
+  width: 40px;
 
   @media only screen and (max-width: $bp-medium) {
     width: 35px;
   }
 
   @media only screen and (max-width: $bp-smallest) {
-    width: 15px;
+    width: 20px;
   }
 }

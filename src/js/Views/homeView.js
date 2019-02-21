@@ -3,7 +3,10 @@ import { elements } from './base';
 // Render Initial view
 export const renderHome = () => {
   const markup = `
+    <div class="darkmode">
+    <span class="darkmode__text">Dark Mode:</span>
     <input name= "checkbox" type="checkbox" id="switch" class="switch" /><label for="switch">Toggle</label>
+    </div>
     <div class="current noselect">
       <div class="title animated fadeIn">
         <svg class="title__icon">
