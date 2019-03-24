@@ -1,16 +1,16 @@
 # weather-app
 
-## Project made from scratch using Vanilla JS
+## [Check it here[(https://fidalgodev.github.io/weather-app/)
 
-### This project uses the [Open Weather Map API](https://openweathermap.org/api)
+### Project made from scratch using Vanilla JS
+
+#### This project uses the [Open Weather Map API](https://openweathermap.org/api)
 
 Since this API doesn't let you search for the Locations available without getting their weather, and the only thing they do is give you a .json file with 19mb with this info, I built a quick NodeJS REST API that you can check [here](https://github.com/fidalgodev/cities-ids-api).
 
 This projects uses the **MVC architecture**. I also used **Webpack** to bundle everything together, and used **Babel** to Transpile and Polyfill all the code. This project also uses **SASS**.
 
-You can check the project live [here](https://fidalgodev.github.io/weather-app/)
-
-Or you can clone it and run:
+You can clone it and run:
 
 ```shell
 npm install
