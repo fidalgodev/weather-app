@@ -1,6 +1,6 @@
 # weather-app
 
-## [Check it here[(https://fidalgodev.github.io/weather-app/)
+## [Check it here](https://fidalgodev.github.io/weather-app/)
 
 ### Project made from scratch using Vanilla JS
 
