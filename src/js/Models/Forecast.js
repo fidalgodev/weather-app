@@ -9,20 +9,22 @@ export default class Forecast {
   }
 
   async getForecast() {
-    const proxy = process.env.PROXY;
-    const api = process.env.APIKEY;
     let query;
     if (this.data.length === 1) {
-      query = `${proxy}api.openweathermap.org/data/2.5/forecast?id=${
+      query = `${
+        process.env.PROXY
+      }api.openweathermap.org/data/2.5/forecast?id=${
         this.data[0]
-      }&units=metric&appid=${api}`;
+      }&units=metric&appid=${process.env.APIKEY}`;
     } else {
-      query = `${proxy}api.openweathermap.org/data/2.5/forecast?lat=${
-        this.data[0]
-      }&lon=${this.data[1]}&units=metric&appid=${api}`;
+      query = `${
+        process.env.PROXY
+      }api.openweathermap.org/data/2.5/forecast?lat=${this.data[0]}&lon=${
+        this.data[1]
+      }&units=metric&appid=${process.env.APIKEY}`;
     }
     try {
-      const res = await axios.get(`${proxy}${query}`);
+      const res = await axios.get(`${process.env.PROXY}${query}`);
 
       // Get only 1 result for each day since API returns data each 3 hours for 5 days
       // Not the most elegant way here

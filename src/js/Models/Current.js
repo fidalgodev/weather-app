@@ -15,9 +15,6 @@ function getCurrentLocation(options) {
   });
 }
 
-const proxy = process.env.PROXY;
-const api = process.env.APIKEY;
-
 // Class for the current weather
 export default class Current {
   constructor() {
@@ -54,9 +51,9 @@ export default class Current {
   async getWeather() {
     try {
       const res = await axios.get(
-        `${proxy}api.openweathermap.org/data/2.5/weather?lat=${
+        `${process.env.PROXY}api.openweathermap.org/data/2.5/weather?lat=${
           this.coords[0]
-        }&lon=${this.coords[1]}&units=metric&appid=${api}`
+        }&lon=${this.coords[1]}&units=metric&appid=${process.env.APIKEY}`
       );
       // Save the data on the object
       this.name = res.data.name;

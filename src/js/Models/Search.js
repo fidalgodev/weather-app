@@ -7,10 +7,11 @@ export default class Search {
 
   // Get results from query
   async getResults() {
-    const proxy = process.env.PROXY;
     try {
       const res = await axios.get(
-        `${proxy}https://get-cities-ids.herokuapp.com/?q=${this.query}`
+        `${process.env.PROXY}https://get-cities-ids.herokuapp.com/?q=${
+          this.query
+        }`
       );
       // Save the data on the object
       this.results = res.data;

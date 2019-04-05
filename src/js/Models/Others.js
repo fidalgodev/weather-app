@@ -6,10 +6,12 @@ export default class Others {
   }
 
   async getWeather(id) {
-    const proxy = process.env.PROXY;
-    const api = process.env.APIKEY;
     const res = await axios.get(
-      `${proxy}api.openweathermap.org/data/2.5/weather?id=${id}&units=metric&appid=${api}`
+      `${
+        process.env.PROXY
+      }api.openweathermap.org/data/2.5/weather?id=${id}&units=metric&appid=${
+        process.env.APIKEY
+      }`
     );
     const weather = {
       id: res.data.id,
