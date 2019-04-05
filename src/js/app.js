@@ -258,7 +258,7 @@ base.elements.container.addEventListener('click', e => {
   // If current card clicked
   if (currentCard && currentCard.dataset.id) {
     const coords = currentCard.dataset.id.split(',').map(JSON.parse);
-    const current = state.current;
+    const { current } = state;
     if (coords.length === 2) forescastController(current, coords, false);
   }
 
